@@ -1,26 +1,19 @@
 .view-container{
-        max-width: 1000px;
-        width: 100%;
-        margin: 80px auto;
+  max-width: 1000px;
+  width: 100%;
+  margin: 80px auto;
+  text-align: center;
 }
 :root {
   --margin-line: #941c5a;
   --lines: #1d97b8;
 }
 
-html,
-body {
-  /*background-color: #eee;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  min-height: 100%;*/
-}
+
 
 .paper {
   max-width: 850px;
-  height: 1100px;
+  min-height: 600px;
   background-color: #fff;
   background-image: linear-gradient(var(--lines) 0.05em, transparent 0.05em);
   background-size: 100% 2em;
@@ -85,4 +78,80 @@ textarea {
   padding-left: 1rem;
   margin: 0;
   resize: none;
+}
+
+.t-button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 20px;
+}
+.b-blue {background-color: #008CBA;} /* Blue */
+
+/* The Modal (background) */
+.t-modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 2; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.t-modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal-form{ position: relative;min-height: 300px}
+.modal-form form{
+    max-width: 400px;
+    margin: 0px auto;
+    text-align: left;
+}
+.modal-form form p{
+  text-align: center;
+}
+.modal-form img{
+    width: 120px;
+    height: auto;
+    position: absolute;
+    right: 40px;
+}
+.modal-form form label{
+  display: block;
+}
+.modal-form form label span{
+    font-size: 10px;
+}
+.modal-form form input{
+    width: 100%;
+    margin-bottom: 15px;
 }
