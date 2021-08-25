@@ -19,26 +19,26 @@
 		    <div class="holes"></div>
 		    <textarea placeholder="Please Type Here" id="text_value"></textarea>
 		</div>
-		<button id="openForm" type="button" class="t-button b-blue"><?php echo $buttontext1;?></button>
+		<button id="openForm" type="button" class="t-button" style="background-color: <?php echo $tx_btn1_color;?>"><?php echo $buttontext1;?></button>
 	</form>
 	<!-- The Modal -->
 	<div id="sendText" class="t-modal">
 		<!-- Modal content -->
 	  	<div class="t-modal-content">
-	    	<span class="close">&times;</span>
+	    	<span class="t-close">&times;</span>
 	    	<div class="modal-form">
 	    		<?php if( $image = wp_get_attachment_image_src( $tx_image_id ) ) { ?>
 	    			<img src="<?php echo $image[0];?>">
 	    		<?php }?>
 	    		<form action="" method="post">
-	    			<p><?php echo $tx_longtext;?></p>
+	    			<p><?php echo $longtext;?></p>
 	    			<label>Name</label>
 	    			<input type="text" name="name" id="name">
 	    			<label>Email</label>
 	    			<input type="email" name="email" id="email">
 	    			<label>Phone <span>(Optional)</span></label>
 	    			<input type="text" name="phone" id="phone">
-	    			<button id="send" type="button" class="t-button b-blue"><?php echo $buttontext2;?></button>
+	    			<button id="send" type="button" class="t-button" style="background-color: <?php echo $tx_btn1_color;?>"><?php echo $buttontext2;?></button>
 
 	    		</form>
 	    	</div>
@@ -104,7 +104,7 @@ var modal = document.getElementById("sendText");
 var btn = document.getElementById("openForm");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("t-close")[0];
 
 
 // When the user clicks on the button, open the modal

@@ -114,20 +114,22 @@ textarea {
   padding: 20px;
   border: 1px solid #888;
   width: 60%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  z-index: 99;
   position: relative;
 }
 
-.close:hover,
-.close:focus {
+/* The Close Button */
+.t-close {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  z-index: 99;
+  position: absolute;
+  right: 12px;
+  top: 0px;
+}
+
+.t-close:hover,
+.t-close:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
@@ -147,6 +149,7 @@ textarea {
     position: absolute;
     right: 40px;
 }
+
 .modal-form form label{
   display: block;
 }
@@ -156,4 +159,14 @@ textarea {
 .modal-form form input{
     width: 100%;
     margin-bottom: 15px;
+}
+@media only screen and (max-width: 600px) {
+  .modal-form img{
+      position: initial;
+      margin: 10px auto;
+      display: block;
+  }
+  .t-modal-content{
+    width: 80%;
+  }
 }

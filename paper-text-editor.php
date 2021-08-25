@@ -17,12 +17,14 @@ function paper_text_editor_view($atts = array())
     extract(shortcode_atts(array(
       	'buttontext1' => 'Send',
       	'buttontext2' => 'Send',
+      	'longtext' => 'Your Text Here.',
 	
    ), $atts));
     $tx_compay_email = get_option('tx_compay_email');
 	$tx_image_id = get_option('tx_image_id');
-	$tx_longtext = get_option('tx_longtext');
 	$tx_fonts = get_option('tx_fonts');
+	$tx_btn1_color = get_option('tx_btn1_color');
+	$tx_btn2_color = get_option('tx_btn2_color');
     ob_start();
     include 'templates/view.php';
     $content = ob_get_clean();
@@ -84,9 +86,10 @@ function paper_text_setting_template(){
         update_option('tx_company_email_subject',$_POST['tx_company_email_subject']);
         update_option('tx_company_email',$_POST['tx_company_email']);
         update_option('tx_image_id',$_POST['tx_image_id']);
-        update_option('tx_longtext',$_POST['tx_longtext']);
         update_option('tx_success_msg',$_POST['tx_success_msg']);
         update_option('tx_fonts',$_POST['tx_fonts']);
+        update_option('tx_btn1_color',$_POST['tx_btn1_color']);
+        update_option('tx_btn2_color',$_POST['tx_btn2_color']);
     }
 	$tx_company_email_subject = get_option('tx_company_email_subject');
 	if($tx_company_email_subject ==""){
@@ -97,8 +100,15 @@ function paper_text_setting_template(){
 		$tx_company_email = "tjthouhid@gmail.com";
 	}
 	$tx_image_id = get_option('tx_image_id');
-	$tx_longtext = get_option('tx_longtext');
 	$tx_fonts = get_option('tx_fonts');
+	$tx_btn1_color = get_option('tx_btn1_color');
+	if($tx_btn1_color ==""){
+		$tx_btn1_color = "#f6c9c9";
+	}
+	$tx_btn2_color = get_option('tx_btn2_color');
+	if($tx_btn2_color ==""){
+		$tx_btn2_color = "#f6c9c9";
+	}
 	$tx_success_msg = get_option('tx_success_msg');
 	if($tx_success_msg ==""){
 		$tx_success_msg = "Message sent successfully!";
@@ -146,6 +156,21 @@ function paper_text_setting_template(){
 			background-color: #64d668; /* Green */
 			cursor: pointer;
 		}
+		.code-exm{
+			background-color: #ffff;
+		    display: block;
+		    margin: 15px 0px;
+		    color: #c12a2a;
+		    font-size: 20px;
+		    padding: 15px 10px;
+		}
+		.code-instruction{
+			font-size: 18px;
+		    color: #716767;
+		    text-decoration: underline;
+		    text-align: center;
+		    display: block;
+		}
 	</style>
 	<script type="text/javascript">
 		jQuery(function($){
@@ -186,15 +211,14 @@ function paper_text_setting_template(){
 		});
 	</script>
 	<h1>Paper Text Usage</h1>
-	<code>
+	<code class="code-exm">
 		[paper-text-editor]
 	</code>
-	<br>
-	<code>
-		[paper-text-editor buttontext1="Send 1" buttontext2="Send 2"]
+	<code class="code-exm">
+		[paper-text-editor buttontext1="Send 1" buttontext2="Send 2" longtext="Your Text Here"]
 	</code>
 	<br>
-	<span>NB : buttontext1 And buttontext2 is Optional for changing button text on frontend</span>
+	<span class="code-instruction"><strong>NB : </strong> buttontext1 And buttontext2 is Optional for changing buttons text on frontend. <br> longtext is also Optional for changing moodal text on frontend.</span>
 	<h1>Paper Text Setting</h1>
 	<form action="" method="POST">
 	<table class="ctable">
@@ -208,6 +232,14 @@ function paper_text_setting_template(){
 					<option <?php if($tx_fonts=="Amatic SC"){ echo "selected";}?> value="Amatic SC">Amatic SC</option>
 				</select>
 			</td>
+		</tr>
+		<tr>
+			<th>Button 1 Color : </th>
+			<td><input type="color" name="tx_btn1_color" value="<?php echo $tx_btn1_color;?>"></td>
+		</tr>
+		<tr>
+			<th>Button 2 Color : </th>
+			<td><input type="color" name="tx_btn2_color" value="<?php echo $tx_btn2_color;?>"></td>
 		</tr>
 		<tr>
 			<th>Email Subject: </th>
@@ -233,12 +265,6 @@ function paper_text_setting_template(){
 						  <a href="#" class="misha-rmv" style="display:none">Remove image</a>';
 
 				} ?>
-			</td>
-		</tr>
-		<tr>
-			<th>Long Text :</th>
-			<td>
-				<textarea name="tx_longtext"><?php echo $tx_longtext;?></textarea>
 			</td>
 		</tr>
 		<tr>
