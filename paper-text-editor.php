@@ -22,6 +22,7 @@ function paper_text_editor_view($atts = array())
     $tx_compay_email = get_option('tx_compay_email');
 	$tx_image_id = get_option('tx_image_id');
 	$tx_longtext = get_option('tx_longtext');
+	$tx_fonts = get_option('tx_fonts');
     ob_start();
     include 'templates/view.php';
     $content = ob_get_clean();
@@ -85,6 +86,7 @@ function paper_text_setting_template(){
         update_option('tx_image_id',$_POST['tx_image_id']);
         update_option('tx_longtext',$_POST['tx_longtext']);
         update_option('tx_success_msg',$_POST['tx_success_msg']);
+        update_option('tx_fonts',$_POST['tx_fonts']);
     }
 	$tx_company_email_subject = get_option('tx_company_email_subject');
 	if($tx_company_email_subject ==""){
@@ -96,6 +98,7 @@ function paper_text_setting_template(){
 	}
 	$tx_image_id = get_option('tx_image_id');
 	$tx_longtext = get_option('tx_longtext');
+	$tx_fonts = get_option('tx_fonts');
 	$tx_success_msg = get_option('tx_success_msg');
 	if($tx_success_msg ==""){
 		$tx_success_msg = "Message sent successfully!";
@@ -182,9 +185,28 @@ function paper_text_setting_template(){
 
 		});
 	</script>
+	<h1>Paper Text Usage</h1>
+	<code>
+		[paper-text-editor]
+	</code>
+	<code>
+		[paper-text-editor buttontext1="Send 1" buttontext2="Send 2"]
+	</code>
+	<span>buttontext1 And buttontext2 is Optional for changing button text on frontend</span>
 	<h1>Paper Text Setting</h1>
 	<form action="" method="POST">
 	<table class="ctable">
+		<tr>
+			<th>Choose Font: </th>
+			<td>
+				<select name="tx_fonts">
+					<option value="default">Default</option>
+					<option <?php if($tx_fonts=="Allison"){ echo "selected";}?> value="Allison">Allison</option>
+					<option <?php if($tx_fonts=="Klee One"){ echo "selected";}?> value="Klee One">Klee One</option>
+					<option <?php if($tx_fonts=="Amatic SC"){ echo "selected";}?> value="Amatic SC">Amatic SC</option>
+				</select>
+			</td>
+		</tr>
 		<tr>
 			<th>Email Subject: </th>
 			<td><input type="text" name="tx_company_email_subject" value="<?php echo $tx_company_email_subject;?>"></td>
@@ -199,7 +221,7 @@ function paper_text_setting_template(){
 				<?php if( $image = wp_get_attachment_image_src( $tx_image_id ) ) {
 
 					echo '<a href="#" class="misha-upl"><img src="' . $image[0] . '" /></a>
-					      <input type="hidden" name="tx_image_id" value="' . $image_id . '">
+					      <input type="hidden" name="tx_image_id" value="' . $tx_image_id . '">
 					      <a href="#" class="misha-rmv">Remove image</a>';
 
 				} else {

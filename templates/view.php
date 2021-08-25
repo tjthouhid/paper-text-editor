@@ -1,4 +1,17 @@
 <link rel="stylesheet" type="text/css" href="<?php echo plugin_dir_url(__FILE__)."css/view.css";?>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<?php if($tx_fonts=="Allison"){ ?>
+	<link href="https://fonts.googleapis.com/css2?family=Allison&display=swap" rel="stylesheet">
+	<style type="text/css">.paper textarea{font-family: 'Allison', cursive;}</style>
+<?php } else if($tx_fonts=="Klee One"){ ?>
+	<link href="https://fonts.googleapis.com/css2?family=Klee+One&display=swap" rel="stylesheet">
+	<style type="text/css">.paper textarea{font-family: 'Klee One', cursive;}</style>
+<?php } else if($tx_fonts=="Amatic SC"){ ?>
+	<link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
+	<style type="text/css">.paper textarea{font-family: 'Amatic SC', cursive;}</style>
+<?php } else { }?>
+
 
 <div class="view-container">
 	<form action="" method="post">
@@ -6,7 +19,7 @@
 		    <div class="holes"></div>
 		    <textarea placeholder="Please Type Here" id="text_value"></textarea>
 		</div>
-		<button id="openForm" type="button" class="t-button b-blue">Send</button>
+		<button id="openForm" type="button" class="t-button b-blue"><?php echo $buttontext1;?></button>
 	</form>
 	<!-- The Modal -->
 	<div id="sendText" class="t-modal">
@@ -25,7 +38,7 @@
 	    			<input type="email" name="email" id="email">
 	    			<label>Phone <span>(Optional)</span></label>
 	    			<input type="text" name="phone" id="phone">
-	    			<button id="send" type="button" class="t-button b-blue">Send</button>
+	    			<button id="send" type="button" class="t-button b-blue"><?php echo $buttontext2;?></button>
 
 	    		</form>
 	    	</div>
