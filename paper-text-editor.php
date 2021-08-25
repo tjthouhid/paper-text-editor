@@ -189,10 +189,12 @@ function paper_text_setting_template(){
 	<code>
 		[paper-text-editor]
 	</code>
+	<br>
 	<code>
 		[paper-text-editor buttontext1="Send 1" buttontext2="Send 2"]
 	</code>
-	<span>buttontext1 And buttontext2 is Optional for changing button text on frontend</span>
+	<br>
+	<span>NB : buttontext1 And buttontext2 is Optional for changing button text on frontend</span>
 	<h1>Paper Text Setting</h1>
 	<form action="" method="POST">
 	<table class="ctable">
